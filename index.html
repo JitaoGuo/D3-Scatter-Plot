@@ -70,7 +70,7 @@ table {
       </div>
   </div><br>
   <div class="card_1">
-    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table class="mdl-data-table mdl-js-data-table mdl-shadow--0dp">
         <thead>
             <tr>
                 <th class="mdl-data-table__cell--non-numeric">Name</th>
@@ -96,9 +96,9 @@ table {
 
 </div>
 
-    <div class="hover_header" style="color:white;">
-        <h4 class="header"></h4>
-    </div>
+<div class="hover_header" style="color:white;">
+    <h4 class="header"></h4>
+</div>
 
 
 <div class="card">
@@ -117,17 +117,17 @@ table {
     </div>
     <div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <label class="mdl-textfield__label">MPG Min Value </label>
-        <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_minimum"/>
-        <span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
-    </div><br>
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <label class="mdl-textfield__label">MPG Max Value </label>
-    <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_maximum"/>
-    <span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
-</div>
-</div>
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="query_mpg" >Query MPG </button>
+            <label class="mdl-textfield__label">MPG Min Value </label>
+            <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_minimum"/>
+            <span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
+        </div><br>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label class="mdl-textfield__label">MPG Max Value </label>
+            <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_maximum"/>
+            <span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
+        </div>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="query_mpg" >Query MPG </button>
 
 </div>
 <div class="plot">
@@ -318,7 +318,7 @@ $("#query_mpg").click(function(){
         })
         .on("mouseout",function(d){
             d3.select(".hover_header").selectAll("h4").remove();
-            d3.select(".hover_header").append("h4").text(".");
+            d3.select(".hover_header").append("h4").text("");
         });
         scatterPoint.exit().remove();
     }
