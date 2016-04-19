@@ -17,12 +17,54 @@ table {
 
 table, td, th {
     border: 1px solid black;
-    margin-left: 10px;
+    
+}
+.card_1{
+    background: #fff;
+    padding:10px;
+    border-radius: 2px;
+    display: block;
+    margin: 1rem;
+    float:left;
+    position: relative;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.hover_header{
+    background: #fff;
+    border-radius: 2px;
+    display: block;
+    float:left;
+    position: relative;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    font-size: 1;
+}
+.card{
+    clear:both;
+    background: #fff;
+    padding:10px;
+    border-radius: 2px;
+    display: block;
+    width:18%;
+    float: left;
+    margin: 1rem;
+    position: relative;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.plot{
+    height:400px;
+    margin-top: -150px;
+    float:left;
+    background: #fff;
+    display: block;
+    float: left;
+    position: relative;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
 
 </style>
-<body>
+<body style="background-color:#eeeded">
 
     <div>
       <header class="mdl-layout__header">
@@ -31,7 +73,7 @@ table, td, th {
           <div class="mdl-layout-spacer"></div>
       </div>
   </div><br>
-  <div>
+  <div class="card_1">
     <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
         <thead>
             <tr>
@@ -57,12 +99,13 @@ table, td, th {
   </table>
 
 </div>
-<div class="hover_header" style="color:white;">
-    <h4>.</h4>
-</div>
-<div class="plot">
-</div>
-<div>
+
+    <div class="hover_header" style="color:white;">
+        <h4 class="header"></h4>
+    </div>
+
+
+<div class="card">
     <div>
         &nbsp;<label id="sel_x_label"> X-Axis Label </label>
         <select id="sel-x">
@@ -71,23 +114,27 @@ table, td, th {
     </div>
     <div>
         &nbsp;<label id="sel_y_label"> Y-Axis Label </label>
-        <select id="sel-y">
+        <select class="mdl-select__input" id="sel-y">
             <option value="">  Select Y Dimension </option>
         </select>
+
     </div>
-</div>
-<div>
-    <br/>
-    &nbsp; <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <label class="mdl-textfield__label">MPG Min Value </label>
-    <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_minimum"/>
+    <div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <label class="mdl-textfield__label">MPG Min Value </label>
+        <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_minimum"/>
+        <span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
+    </div><br>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <label class="mdl-textfield__label">MPG Max Value </label>
+    <input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_maximum"/>
     <span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
-</div><br>
-&nbsp; <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-<label class="mdl-textfield__label">MPG Max Value </label>
-<input class="mdl-textfield__input" type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.1" id="mpg_maximum"/>
-<span class="mdl-textfield__error">Input allowed upto 1 decimal place</span>
 </div>
+</div>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="query_mpg" >Query MPG </button>
+
+</div>
+<div class="plot">
 </div>
 <div>
 </br>
@@ -96,11 +143,9 @@ table, td, th {
     </div>
 </div>
 </div>
-<div>
-    <div>
-       &nbsp; <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="query_mpg" >Query MPG </buttin>
-   </div>
-</div>
+
+
+
 </div>
 </body>
 
@@ -168,6 +213,7 @@ $("#query_mpg").click(function(){
         errorMessage += "<p>Max value cannot be smaller than Min value!</p>";
     }
     if(isError == true){
+        
         $("#error_field").find("p").remove();
         $("#error_field").append(errorMessage);
         $("#error_field").show();
@@ -189,7 +235,7 @@ $("#query_mpg").click(function(){
         }
         var margin = {top:50, right:50, bottom:50, left:50};
         var width = 960 - margin.left-margin.right;
-        var height = 550-margin.top-margin.bottom;
+        var height = 450-margin.top-margin.bottom;
         var canvas = d3.select("div.plot").select("svg");
         var firstplot = false;
         if (canvas==""){
