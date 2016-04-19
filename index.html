@@ -15,10 +15,6 @@ table {
     border-collapse: collapse;
 }
 
-table, td, th {
-    border: 1px solid black;
-    
-}
 .card_1{
     background: #fff;
     padding:10px;
@@ -213,7 +209,7 @@ $("#query_mpg").click(function(){
         errorMessage += "<p>Max value cannot be smaller than Min value!</p>";
     }
     if(isError == true){
-        
+
         $("#error_field").find("p").remove();
         $("#error_field").append(errorMessage);
         $("#error_field").show();
